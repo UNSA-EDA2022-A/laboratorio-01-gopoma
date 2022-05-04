@@ -20,9 +20,27 @@ public class Exercise2 {
 		}
 	}
 
-	public Integer getMenorNumeroSaltos(int a []) {
-
-		// TO DO
-		return -1;
-	}
+	public Integer getMenorNumeroSaltos(int a[]) {
+		final int MAXIMA_LONGITUD_SALTO = 50;
+        	final int POSICION_INICIAL = 0;
+        
+        	if(a[0] - POSICION_INICIAL > MAXIMA_LONGITUD_SALTO) {
+            		return -1;
+        	}
+        	for(int i = 0; i < a.length - 1; i++) {
+            		if(a[i + 1] - a[i] > MAXIMA_LONGITUD_SALTO) {
+                		return -1;
+            		}
+        	}
+        
+        	int actual = POSICION_INICIAL;
+        	int saltos = 0;
+        	for(int i = 0; i < a.length; i++) {
+            		if(!(a[i] - actual <= MAXIMA_LONGITUD_SALTO)) {
+                		actual = a[i - 1];
+                		saltos++;
+            		}
+        	}
+        	return ++saltos;
+    	}
 }
